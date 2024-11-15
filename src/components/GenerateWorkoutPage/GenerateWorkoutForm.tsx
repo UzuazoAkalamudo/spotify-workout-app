@@ -35,6 +35,13 @@ const GenerateWorkoutForm = ({setWorkout}) => {
         console.log(formData);
         console.log(selectedAlbum);
 
+        setFormData({
+            searchInput: "",
+            incline: "medium",
+            speed: "jog"
+        }
+        );
+
         if (Object.keys(selectedAlbum).length !== 0 && formData.incline && formData.speed) {
 
             // Get album track data , object with name/ids, track data
@@ -99,10 +106,10 @@ const GenerateWorkoutForm = ({setWorkout}) => {
     }, [formData.searchInput, token])
 
     return (
-        <section className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-screen">
             <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl" id="album-form">
                 <div className="flex flex-col gap-2">
-                    <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Playlist or Album" />
+                    <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
                     {searchItemsVisibile && (<ul id="album-list" className="flex flex-col gap-2 bg-gray-300 rounded-lg p-5">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2" key={index} onClick={() => selectAlbum(album)}>
@@ -136,10 +143,10 @@ const GenerateWorkoutForm = ({setWorkout}) => {
                     <button className="w-full bg-green-500 hover:bg-green-600
                      text-white font-bold py-2 px-4 rounded-lg transition duration-200
                      ease-in-out focus:outline-none focus:ring-2
-                   focus:ring-green-400 focus:ring-opacity-50" type="submit">Generate treadmill workout</button>
+                   focus:ring-green-400 focus:ring-opacity-50" type="submit">Generate workout</button>
                 </div>
             </form>
-        </section>
+        </div>
     );
 }
 

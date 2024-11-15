@@ -20,7 +20,7 @@ const Homepage = () => {
     return (
         <div className="h-screen flex flex-col justify-center items-center gap-4">
             <h1 className="text-5xl font-racing">Spotify Workout Generator</h1>
-            <small className="text-lg">Generate treadmill workouts tailored to your favourite playlists and albums</small>
+            <small className="text-lg">Generate treadmill workouts tailored to your favourite albums</small>
             <LoginButton />
         </div>
     );

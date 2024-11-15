@@ -7,10 +7,8 @@ import { useNavigate } from "react-router-dom";
 import React from "react"
 
 const GenerateWorkoutPage = () => {
-
     const { token } = useContext<IAuthContext>(AuthContext);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         if (!token) {
@@ -20,12 +18,12 @@ const GenerateWorkoutPage = () => {
 
     const [workout, setWorkout] = useState({})
 
-
     return (
         <>
             <LoginButton />
-            <GenerateWorkoutForm setWorkout={setWorkout}/>
-            <Workout workout={workout} />
+            <button type="button" onClick={()=>(setWorkout({}))}>Search</button>
+            {Object.keys(workout).length === 0 && <GenerateWorkoutForm setWorkout={setWorkout}/>}
+            {Object.keys(workout).length > 0 && <Workout workout={workout} />}
         </>
     );
 }

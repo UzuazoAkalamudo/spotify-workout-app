@@ -19,7 +19,7 @@ export const getSpotifyAlbums = async (searchInput, token) => {
 
 export const getSpotifyAlbumTracks = async (album_id, token) => {
     try {
-        const response = await fetch(`https://api.spotify.com/v1/albums/${album_id}/tracks?limit=20&offset=0`, {
+        const response = await fetch(`https://api.spotify.com/v1/albums/${album_id}/tracks?limit=50&offset=0`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
