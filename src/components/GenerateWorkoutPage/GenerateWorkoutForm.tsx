@@ -110,9 +110,9 @@ const GenerateWorkoutForm = ({setWorkout}) => {
             <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl" id="album-form">
                 <div className="flex relative flex-col gap-2">
                     <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
-                    {searchItemsVisible && (<ul id="album-list" className="flex absolute mt-11 flex-col gap-2 bg-gray-300 rounded-lg p-5">
+                    {searchItemsVisible && (<ul id="album-list" className="flex w-full absolute mt-11 flex-col gap-2 max-h-80 overflow-y-auto bg-gray-300 rounded-lg">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
-                            <li className="flex items-center gap-2" key={index} onClick={() => selectAlbum(album)}>
+                            <li className="flex items-center gap-2 hover:bg-gray-200 p-3 cursor-pointer" key={index} onClick={() => selectAlbum(album)}>
                                 <img src={album.images[2].url} alt="album cover" />
                                 <h3>{album.name}</h3>
                             </li>
