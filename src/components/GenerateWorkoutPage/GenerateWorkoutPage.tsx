@@ -1,6 +1,6 @@
 import GenerateWorkoutForm from "./GenerateWorkoutForm.tsx";
 import Workout from "./Workout.tsx";
-import LoginButton from "../Homepage/LoginButton.tsx";
+import Sidebar from "../Sidebar/Sidebar.tsx"
 import { useState, useEffect, useContext } from "react";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
 import { useNavigate } from "react-router-dom";
@@ -19,12 +19,11 @@ const GenerateWorkoutPage = () => {
     const [workout, setWorkout] = useState({})
 
     return (
-        <>
-            <LoginButton />
-            <button type="button" onClick={()=>(setWorkout({}))}>Search</button>
+        <div className="flex">
+            <Sidebar setWorkout={setWorkout}/>
             {Object.keys(workout).length === 0 && <GenerateWorkoutForm setWorkout={setWorkout}/>}
             {Object.keys(workout).length > 0 && <Workout workout={workout} />}
-        </>
+        </div>
     );
 }
 

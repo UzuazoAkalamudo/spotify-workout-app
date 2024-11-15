@@ -14,7 +14,7 @@ const GenerateWorkoutForm = ({setWorkout}) => {
     const [spotifyData, setSpotifyData] = useState({})
     const [selectedAlbum, setSelectedAlbum] = useState({})
     const { token } = useContext<IAuthContext>(AuthContext);
-    const [searchItemsVisibile, setSearchItemsVisible] = useState(false);
+    const [searchItemsVisible, setSearchItemsVisible] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -106,11 +106,11 @@ const GenerateWorkoutForm = ({setWorkout}) => {
     }, [formData.searchInput, token])
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-screen w-screen">
             <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl" id="album-form">
                 <div className="flex flex-col gap-2">
                     <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
-                    {searchItemsVisibile && (<ul id="album-list" className="flex flex-col gap-2 bg-gray-300 rounded-lg p-5">
+                    {searchItemsVisible && (<ul id="album-list" className="flex flex-col gap-2 bg-gray-300 rounded-lg p-5">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2" key={index} onClick={() => selectAlbum(album)}>
                                 <img src={album.images[2].url} alt="album cover" />

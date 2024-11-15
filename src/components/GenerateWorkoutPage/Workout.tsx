@@ -3,7 +3,7 @@ import {Track} from "../../models/models"
 
 const Workout = ({workout}) => {
     return (
-        <div className="flex flex-col p-8 gap-8">
+        <div className="flex flex-col p-8 gap-8 h-screen w-screen">
             <div className="flex gap-10">
                 <img className="w-40 md:w-56 lg:w-64 rounded-md" alt="album cover" src={workout?.coverUrl} />
                 <div className="flex flex-col self-end">
