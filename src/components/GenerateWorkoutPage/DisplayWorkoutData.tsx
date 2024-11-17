@@ -14,7 +14,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
     return (
         <section className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
             <section className="flex gap-10">
-                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt={`Album cover for "${workoutData?.name}"`} src={workoutData?.coverUrl} />
+                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt={`Album cover for "${workoutData?.name}"`} aria-label={`Cover image of workout album "${workoutData?.name}"`} src={workoutData?.coverUrl} />
                 <div className="flex flex-col self-end">
                     <p className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</p>
                     <h1 className="font-racing text-xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>
@@ -31,12 +31,12 @@ const DisplayWorkoutData = ({ workoutData }) => {
 
             <section className="flex flex-col">
                 <div className="grid grid-cols-[1fr,4fr,1fr,1fr] mb-4">
-                    <h2>#</h2>
-                    <h2>Title</h2>
-                    <h2>Set Incline</h2>
-                    <button onClick={toggleSpeed} className="justify-self-start hover:text-green-400">{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
+                    <h2 aria-label="Track number">#</h2>
+                    <h2 aria-label="Track title">Title</h2>
+                    <h2 aria-label="Values to set treadmill incline to">Set Incline</h2>
+                    <button onClick={toggleSpeed} className="justify-self-start hover:text-green-400" aria-label={toggleSpeedClicked ? "Set speed in miles per hour (mph)" : "Set speed in kilometers per hour (km/h)"}>{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
                 </div>
-                <ul>
+                <ul aria-label="List of tracks for the workout album">
                     {workoutData?.tracks?.map((track: Track, index: number) => (
                         <li key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
                             <span>{index + 1}</span>
