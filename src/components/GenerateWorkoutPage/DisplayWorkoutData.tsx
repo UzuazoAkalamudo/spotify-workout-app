@@ -23,8 +23,8 @@ const DisplayWorkoutData = ({workoutData}) => {
                 <div className="grid grid-cols-[1fr,4fr,1fr,1fr] mb-4">
                     <h3>#</h3>
                     <h3>Title</h3>
-                    <h3>Incline</h3>
-                    <h3>Speed (mph)</h3>
+                    <h3>Set Incline</h3>
+                    <h3>Set Speed (mph)</h3>
                 </div>
                 {workoutData?.tracks?.map((track: Track, index: number) => (
                     <div key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
