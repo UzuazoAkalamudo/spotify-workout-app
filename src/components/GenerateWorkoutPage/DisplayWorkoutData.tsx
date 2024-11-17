@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Track } from "../../models/models"
+import { Artist } from "../../interfaces/types";
 
 const DisplayWorkoutData = ({ workoutData }) => {
 
@@ -19,7 +20,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
                     <p className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</p>
                     <h1 className="font-racing text-xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>
                     <div className="flex gap-2">
-                        {workoutData?.artists?.map((artist: object, index: number) => (<p key={index} className="font-sans text-base md:text-lg lg:text-xl">{artist.name}</p>))}
+                        {workoutData?.artists?.map((artist: Artist, index: number) => (<p key={index} className="font-sans text-base md:text-lg lg:text-xl">{artist.name}</p>))}
                     </div>
                     <p className="font-sans text-base md:text-lg lg:text-xl">Energy: {workoutData?.energy}</p>
                     <div className="flex gap-2">
