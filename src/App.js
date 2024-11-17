@@ -1,11 +1,18 @@
 import './App.css';
-import Main from './components/Main/Main.tsx';
-import {BrowserRouter} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import Homepage from './components/Homepage/Homepage.tsx'
+import GenerateWorkoutPage from './components/GenerateWorkoutPage/GenerateWorkoutPage.tsx';
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
     <BrowserRouter>
-        <Main />
+      <main>
+        <Routes>
+          <Route path="/" element={<Homepage />}></Route>
+          <Route path="/generate-workout" element={<GenerateWorkoutPage />}></Route>
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
