@@ -1,7 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import {Track} from "../../models/models"
 
 const DisplayWorkoutData = ({workoutData}) => {
+
+    const [toggleSpeedClicked, setToggleSpeedClicked] = useState(false);
+
+
+    const toggleSpeed = () => {
+        setToggleSpeedClicked(!toggleSpeedClicked)
+    }
+
+
     return (
         <div className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
             <div className="flex gap-10">
@@ -24,14 +33,14 @@ const DisplayWorkoutData = ({workoutData}) => {
                     <h3>#</h3>
                     <h3>Title</h3>
                     <h3>Set Incline</h3>
-                    <h3>Set Speed (mph)</h3>
+                    <button onClick={toggleSpeed} className="justify-self-start">{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
                 </div>
                 {workoutData?.tracks?.map((track: Track, index: number) => (
                     <div key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
                         <h3>{index+1}</h3>
                         <h3>{track.name}</h3>
                         <h3>{track.incline}</h3>
-                        <h3>{track.speed.mph}</h3>
+                        <h3>{toggleSpeedClicked ? track.speed.mph : track.speed.kmph}</h3>
                     </div>
                 )
                 )}
