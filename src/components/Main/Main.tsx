@@ -6,12 +6,12 @@ import React from "react";
 const Main = () => {
 
     return (
-        <>
+        <main>
             <Routes>
                 <Route path="/" element={<Homepage />}></Route>
                 <Route path="/generate-workout" element={<GenerateWorkoutPage />}></Route>
             </Routes>
-        </>
+        </main>
     );
 }
 

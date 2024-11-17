@@ -114,7 +114,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2 hover:bg-gray-200 p-3 cursor-pointer" key={index} onClick={() => selectAlbum(album)}>
                                 <img src={album.images[2]?.url} alt="album cover" />
-                                <h3>{album.name}</h3>
+                                <p>{album.name}</p>
                             </li>
                         ))}
                     </ul>)}
