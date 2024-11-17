@@ -74,7 +74,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
             console.log(avEnergy)
 
             // create object with album object
-            const album = new Album(selectedAlbum.id, selectedAlbum.name, selectedAlbum.type, selectedAlbum.artists, avEnergy, selectedAlbum.images[0].url, tracks);
+            const album = new Album(selectedAlbum.id, selectedAlbum.name, selectedAlbum.type, selectedAlbum.artists, avEnergy, selectedAlbum.images[0].url, tracks, formData.incline, formData.speed);
 
             setWorkoutData(album)
         }

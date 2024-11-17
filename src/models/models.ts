@@ -6,14 +6,26 @@ export class Album {
     energy: string;
     coverUrl: string;
     tracks: Array<Object>;
-    constructor(id: string, name: string, type: string, artists: Array<Object>, energy: string, coverUrl: string, tracks: Array<Object>) {
+    userIncline: string;
+    userSpeed: string;
+    constructor(id: string,
+        name: string,
+        type: string,
+        artists: Array<Object>,
+        energy: string,
+        coverUrl: string,
+        tracks: Array<Object>,
+        userIncline: string,
+        userSpeed: string) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.artists = artists;
         this.energy = energy;
         this.coverUrl = coverUrl;
-        this.tracks = tracks
+        this.tracks = tracks;
+        this.userIncline = userIncline;
+        this.userSpeed = userSpeed;
     };
 };
 
