@@ -1,5 +1,6 @@
 import { getSpotifyAlbums, getSpotifyAlbumTracks, getSpotifyAlbumTracksData } from "../../api/spotify";
 import {WorkoutData} from "../../models/models.ts";
+import { Album, SpotifyData } from "../../interfaces/types.ts";
 import { generateTreadmillWorkout } from "../../services/workout.ts";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
 import React, { useEffect, useState, useContext } from "react";
@@ -11,8 +12,15 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
         incline: "medium",
         speed: "jog"
     });
-    const [spotifyData, setSpotifyData] = useState({})
-    const [selectedAlbum, setSelectedAlbum] = useState({})
+    const [spotifyData, setSpotifyData] = useState<SpotifyData>({albums: {items: []}})
+    const [selectedAlbum, setSelectedAlbum] = useState<Album>({
+        id: '',
+        name: '',
+        type: '',
+        artists: [],
+        images: []
+    });
+
     const { token } = useContext<IAuthContext>(AuthContext);
     const [searchItemsVisible, setSearchItemsVisible] = useState(false);
 
