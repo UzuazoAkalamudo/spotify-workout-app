@@ -17,7 +17,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
                 <img className="w-40 md:w-56 lg:w-64 rounded-md" alt="Workout album cover" src={workoutData?.coverUrl} />
                 <div className="flex flex-col self-end">
                     <p className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</p>
-                    <h1 className="font-racing text-2xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>
+                    <h1 className="font-racing text-xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>
                     <div className="flex gap-2">
                         {workoutData?.artists?.map((artist: object, index: number) => (<p key={index} className="font-sans text-base md:text-lg lg:text-xl">{artist.name}</p>))}
                     </div>
