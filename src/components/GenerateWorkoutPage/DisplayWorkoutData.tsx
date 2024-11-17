@@ -1,7 +1,7 @@
 import React from "react"
 import {Track} from "../../models/models"
 
-const Workout = ({workoutData}) => {
+const DisplayWorkoutData = ({workoutData}) => {
     return (
         <div className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
             <div className="flex gap-10">
@@ -36,4 +36,4 @@ const Workout = ({workoutData}) => {
     );
 }
 
-export default Workout;
+export default DisplayWorkoutData;

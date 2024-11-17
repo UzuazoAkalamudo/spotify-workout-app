@@ -1,5 +1,5 @@
 import GenerateWorkoutForm from "./GenerateWorkoutForm.tsx";
-import Workout from "./Workout.tsx";
+import DisplayWorkoutData from "./DisplayWorkoutData.tsx";
 import Sidebar from "../Sidebar/Sidebar.tsx"
 import { useState, useEffect, useContext } from "react";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
@@ -22,7 +22,7 @@ const GenerateWorkoutPage = () => {
         <div className="flex">
             <Sidebar setWorkoutData={setWorkoutData}/>
             {Object.keys(workoutData).length === 0 && <GenerateWorkoutForm setWorkoutData={setWorkoutData}/>}
-            {Object.keys(workoutData).length > 0 && <Workout workoutData={workoutData} />}
+            {Object.keys(workoutData).length > 0 && <DisplayWorkoutData workoutData={workoutData} />}
         </div>
     );
 }
