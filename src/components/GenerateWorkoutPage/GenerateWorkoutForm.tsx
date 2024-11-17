@@ -107,9 +107,9 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
 
     return (
         <section className="flex flex-col justify-center items-center h-screen w-screen">
-            <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl" id="album-form">
+            <form aria-labelledby="treadmill-workout-form" id="treadmill-workout-form" onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl">
                 <div className="flex relative flex-col gap-2">
-                    <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
+                    <input aria-label="Search for an album" className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
                     {searchItemsVisible && (<ul id="album-list" className="flex w-full absolute mt-11 flex-col gap-2 max-h-80 overflow-y-auto bg-gray-300 rounded-lg">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2 hover:bg-gray-200 p-3 cursor-pointer" key={index} onClick={() => selectAlbum(album)}>
@@ -121,8 +121,8 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="incline" className="text-lg font-medium text-gray-700">Incline:</label>
-                    <select className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="incline" value={formData.incline} onChange={handleChange} name="incline">
+                    <label id="incline-label" htmlFor="incline" className="text-lg font-medium text-gray-700">Incline:</label>
+                    <select aria-labelledby="incline-label" className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="incline" value={formData.incline} onChange={handleChange} name="incline">
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
@@ -130,8 +130,8 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="speed" className="text-lg font-medium text-gray-700">Speed:</label>
-                    <select className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="speed" value={formData.speed} onChange={handleChange} name="speed">
+                    <label id="speed-label" htmlFor="speed" className="text-lg font-medium text-gray-700">Speed:</label>
+                    <select aria-labelledby="speed-label" className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="speed" value={formData.speed} onChange={handleChange} name="speed">
                         <option value="walk">Walk</option>
                         <option value="jog">Jog</option>
                         <option value="run">Run</option>
@@ -140,7 +140,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                 </div>
 
                 <div>
-                    <button className="w-full bg-green-500 hover:bg-green-600
+                    <button aria-label="Generate your treadmill workout based on selected album and preferences" className="w-full bg-green-500 hover:bg-green-600
                      text-white font-bold py-2 px-4 rounded-lg transition duration-200
                      ease-in-out focus:outline-none focus:ring-2
                    focus:ring-green-400 focus:ring-opacity-50" type="submit">Generate workout</button>
