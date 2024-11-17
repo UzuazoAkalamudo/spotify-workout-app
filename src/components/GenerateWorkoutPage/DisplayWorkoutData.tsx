@@ -3,7 +3,7 @@ import {Track} from "../../models/models"
 
 const DisplayWorkoutData = ({workoutData}) => {
 
-    const [toggleSpeedClicked, setToggleSpeedClicked] = useState(false);
+    const [toggleSpeedClicked, setToggleSpeedClicked] = useState(true);
 
 
     const toggleSpeed = () => {
@@ -33,7 +33,7 @@ const DisplayWorkoutData = ({workoutData}) => {
                     <h3>#</h3>
                     <h3>Title</h3>
                     <h3>Set Incline</h3>
-                    <button onClick={toggleSpeed} className="justify-self-start">{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
+                    <button onClick={toggleSpeed} className="justify-self-start hover:text-green-400">{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
                 </div>
                 {workoutData?.tracks?.map((track: Track, index: number) => (
                     <div key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
