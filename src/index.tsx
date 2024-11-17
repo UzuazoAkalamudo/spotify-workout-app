@@ -11,6 +11,7 @@ const authConfig: TAuthConfig = {
   tokenEndpoint: "https://accounts.spotify.com/api/token",
   redirectUri: "http://localhost:3000/",
   scope: "user-read-private user-read-email",
+  decodeToken: false
 };
 
 const container = document.getElementById("root");
