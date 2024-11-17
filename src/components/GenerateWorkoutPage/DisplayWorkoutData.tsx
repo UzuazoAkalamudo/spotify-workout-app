@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import {Track} from "../../models/models"
+import { Track } from "../../models/models"
 
-const DisplayWorkoutData = ({workoutData}) => {
+const DisplayWorkoutData = ({ workoutData }) => {
 
     const [toggleSpeedClicked, setToggleSpeedClicked] = useState(true);
 
@@ -12,40 +12,43 @@ const DisplayWorkoutData = ({workoutData}) => {
 
 
     return (
-        <div className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
-            <div className="flex gap-10">
-                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt="album cover" src={workoutData?.coverUrl} />
+        <main className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
+            <section className="flex gap-10">
+                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt="Workout album cover" src={workoutData?.coverUrl} />
                 <div className="flex flex-col self-end">
-                    <h2 className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</h2>
+                    <p className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</p>
                     <h1 className="font-racing text-2xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>
                     <div className="flex gap-2">
-                        {workoutData?.artists?.map((artist: object, index: number) => (<h3 key={index} className="font-sans text-base md:text-lg lg:text-xl">{artist.name}</h3>))}
+                        {workoutData?.artists?.map((artist: object, index: number) => (<p key={index} className="font-sans text-base md:text-lg lg:text-xl">{artist.name}</p>))}
                     </div>
-                    <h2 className="font-sans text-base md:text-lg lg:text-xl">Energy: {workoutData?.energy}</h2>
+                    <p className="font-sans text-base md:text-lg lg:text-xl">Energy: {workoutData?.energy}</p>
                     <div className="flex gap-2">
                         <h2 className="text-green-400 rounded-xl px-3 border-2 border-green-400 font-sans text-base md:text-lg lg:text-xl">{workoutData?.userIncline}</h2>
                         <h2 className="text-green-400 rounded-xl px-3 border-2 border-green-400 font-sans text-base md:text-lg lg:text-xl">{workoutData?.userSpeed}</h2>
                     </div>
                 </div>
-            </div>
-            <div className="flex flex-col">
+            </section>
+
+            <section className="flex flex-col">
                 <div className="grid grid-cols-[1fr,4fr,1fr,1fr] mb-4">
-                    <h3>#</h3>
-                    <h3>Title</h3>
-                    <h3>Set Incline</h3>
+                    <h2>#</h2>
+                    <h2>Title</h2>
+                    <h2>Set Incline</h2>
                     <button onClick={toggleSpeed} className="justify-self-start hover:text-green-400">{toggleSpeedClicked ? "Set Speed (mph)" : "Set Speed (kmph)"}</button>
                 </div>
-                {workoutData?.tracks?.map((track: Track, index: number) => (
-                    <div key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
-                        <h3>{index+1}</h3>
-                        <h3>{track.name}</h3>
-                        <h3>{track.incline}</h3>
-                        <h3>{toggleSpeedClicked ? track.speed.mph : track.speed.kmph}</h3>
-                    </div>
-                )
-                )}
-            </div>
-        </div>
+                <ul>
+                    {workoutData?.tracks?.map((track: Track, index: number) => (
+                        <li key={index} className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200">
+                            <span>{index + 1}</span>
+                            <span>{track.name}</span>
+                            <span>{track.incline}</span>
+                            <span>{toggleSpeedClicked ? track.speed.mph : track.speed.kmph}</span>
+                        </li>
+                    )
+                    )}
+                </ul>
+            </section>
+        </main>
     );
 }
 

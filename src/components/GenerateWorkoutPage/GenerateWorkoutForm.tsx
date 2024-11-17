@@ -106,7 +106,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
     }, [formData.searchInput, token])
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen w-screen">
+        <section className="flex flex-col justify-center items-center h-screen w-screen">
             <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-8 px-20 py-10 rounded-xl" id="album-form">
                 <div className="flex relative flex-col gap-2">
                     <input className="w-full p-2 border-2 border-gray-300 rounded-lg text-gray-700 bg-gray-100 focus:border-blue-400 focus:bg-white focus:outline-none" id="search-input" name="searchInput" value={formData.searchInput} onChange={handleChange} type="text" placeholder="Search Album" />
@@ -146,7 +146,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                    focus:ring-green-400 focus:ring-opacity-50" type="submit">Generate workout</button>
                 </div>
             </form>
-        </div>
+        </section>
     );
 }
 
