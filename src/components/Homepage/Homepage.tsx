@@ -9,13 +9,11 @@ const Homepage = () => {
     const { token } = useContext<IAuthContext>(AuthContext);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (token) {
             navigate("/generate-workout");
         }
     }, [token, navigate]);
-
 
     return (
         <div className="h-screen flex flex-col justify-center items-center gap-4">

@@ -44,7 +44,7 @@ export const getSpotifyAlbumTracksData = async (track_ids, token) => {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log(`Track analysis: ${data}`);
         return data;
     }
     catch (error) {

@@ -4,7 +4,7 @@ import { generateTreadmillWorkout } from "../../services/workout.ts";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
 import React, { useEffect, useState, useContext } from "react";
 
-const GenerateWorkoutForm = ({setWorkout}) => {
+const GenerateWorkoutForm = ({setWorkoutData}) => {
 
     const [formData, setFormData] = useState({
         searchInput: "",
@@ -76,7 +76,7 @@ const GenerateWorkoutForm = ({setWorkout}) => {
             // create object with album object
             const album = new Album(selectedAlbum.id, selectedAlbum.name, selectedAlbum.type, selectedAlbum.artists, avEnergy, selectedAlbum.images[0].url, tracks);
 
-            setWorkout(album)
+            setWorkoutData(album)
         }
         else {
             alert('Please select an album.');
@@ -100,6 +100,7 @@ const GenerateWorkoutForm = ({setWorkout}) => {
         if (!formData.searchInput || !token) return;
         const fetchAlbum = async () => {
             const albums = await getSpotifyAlbums(formData.searchInput, token);
+            console.log(albums)
             setSpotifyData(albums);
         };
         fetchAlbum();
@@ -113,7 +114,7 @@ const GenerateWorkoutForm = ({setWorkout}) => {
                     {searchItemsVisible && (<ul id="album-list" className="flex w-full absolute mt-11 flex-col gap-2 max-h-80 overflow-y-auto bg-gray-300 rounded-lg">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2 hover:bg-gray-200 p-3 cursor-pointer" key={index} onClick={() => selectAlbum(album)}>
-                                <img src={album.images[2].url} alt="album cover" />
+                                <img src={album.images[2]?.url} alt="album cover" />
                                 <h3>{album.name}</h3>
                             </li>
                         ))}

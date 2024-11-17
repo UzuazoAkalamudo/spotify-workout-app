@@ -16,13 +16,13 @@ const GenerateWorkoutPage = () => {
         }
     }, [token, navigate]);
 
-    const [workout, setWorkout] = useState({})
+    const [workoutData, setWorkoutData] = useState({})
 
     return (
         <div className="flex">
-            <Sidebar setWorkout={setWorkout}/>
-            {Object.keys(workout).length === 0 && <GenerateWorkoutForm setWorkout={setWorkout}/>}
-            {Object.keys(workout).length > 0 && <Workout workout={workout} />}
+            <Sidebar setWorkoutData={setWorkoutData}/>
+            {Object.keys(workoutData).length === 0 && <GenerateWorkoutForm setWorkoutData={setWorkoutData}/>}
+            {Object.keys(workoutData).length > 0 && <Workout workoutData={workoutData} />}
         </div>
     );
 }
