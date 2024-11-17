@@ -14,7 +14,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
     return (
         <section className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
             <section className="flex gap-10">
-                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt="Workout album cover" src={workoutData?.coverUrl} />
+                <img className="w-40 md:w-56 lg:w-64 rounded-md" alt={`Album cover for "${workoutData?.name}"`} src={workoutData?.coverUrl} />
                 <div className="flex flex-col self-end">
                     <p className="font-sans text-base md:text-lg lg:text-xl">{workoutData?.type}</p>
                     <h1 className="font-racing text-xl md:text-4xl lg:text-6xl">{workoutData?.name}</h1>

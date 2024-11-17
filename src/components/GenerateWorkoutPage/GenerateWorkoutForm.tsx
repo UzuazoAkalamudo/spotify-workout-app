@@ -113,7 +113,7 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
                     {searchItemsVisible && (<ul id="album-list" className="flex w-full absolute mt-11 flex-col gap-2 max-h-80 overflow-y-auto bg-gray-300 rounded-lg">
                         {spotifyData?.albums?.items?.slice(0, 5).map((album, index) => (
                             <li className="flex items-center gap-2 hover:bg-gray-200 p-3 cursor-pointer" key={index} onClick={() => selectAlbum(album)}>
-                                <img src={album.images[2]?.url} alt="album cover" />
+                                <img src={album.images[2]?.url} alt={`Album cover for "${album.name}"`}/>
                                 <p>{album.name}</p>
                             </li>
                         ))}
