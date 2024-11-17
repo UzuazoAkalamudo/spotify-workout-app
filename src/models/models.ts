@@ -1,4 +1,4 @@
-export class Album {
+export class WorkoutData {
     id: string;
     name: string;
     type: string;

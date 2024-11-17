@@ -1,5 +1,5 @@
 import { getSpotifyAlbums, getSpotifyAlbumTracks, getSpotifyAlbumTracksData } from "../../api/spotify";
-import {Album} from "../../models/models.ts";
+import {WorkoutData} from "../../models/models.ts";
 import { generateTreadmillWorkout } from "../../services/workout.ts";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
 import React, { useEffect, useState, useContext } from "react";
@@ -73,10 +73,9 @@ const GenerateWorkoutForm = ({setWorkoutData}) => {
             const avEnergy = ((sum/trackEnergies.length) * 100).toFixed(0);
             console.log(avEnergy)
 
-            // create object with album object
-            const album = new Album(selectedAlbum.id, selectedAlbum.name, selectedAlbum.type, selectedAlbum.artists, avEnergy, selectedAlbum.images[0].url, tracks, formData.incline, formData.speed);
+            const workoutData = new WorkoutData(selectedAlbum.id, selectedAlbum.name, selectedAlbum.type, selectedAlbum.artists, avEnergy, selectedAlbum.images[0].url, tracks, formData.incline, formData.speed);
 
-            setWorkoutData(album)
+            setWorkoutData(workoutData)
         }
         else {
             alert('Please select an album.');
