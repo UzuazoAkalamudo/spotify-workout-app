@@ -75,7 +75,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
       </section>
 
       <section className="flex flex-col">
-        <button onClick={toggleView}>{songViewClicked ? "Switch to Album View" : "Switch to Song View"}</button>
+        <button className="py-2 px-2 w-52 mb-8 h-15 rounded-md bg-green-400 hover:bg-green-500 focus:bg-green-600" onClick={toggleView}>{songViewClicked ? "Switch to Album View" : "Switch to Song View"}</button>
         <div className="grid grid-cols-[1fr,4fr,1fr,1fr] mb-4">
           <h2 aria-label="Track number">#</h2>
           <h2 aria-label="Track title">Title</h2>
