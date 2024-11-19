@@ -7,7 +7,8 @@ import { WorkoutData } from "../../models/models.ts";
 import { Album, SpotifyData } from "../../interfaces/types.ts";
 import { generateTreadmillWorkout } from "../../services/workout.ts";
 import { AuthContext, type IAuthContext } from "react-oauth2-code-pkce";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
+import _ from "lodash";
 
 const GenerateWorkoutForm = ({ setWorkoutData }) => {
   const [formData, setFormData] = useState({
@@ -28,6 +29,15 @@ const GenerateWorkoutForm = ({ setWorkoutData }) => {
 
   const { token } = useContext<IAuthContext>(AuthContext);
   const [searchItemsVisible, setSearchItemsVisible] = useState(false);
+  const debouncedSearch = useCallback(
+    _.debounce((searchInput, token) => {
+      getSpotifyAlbums(searchInput, token).then((albums) => {
+        console.log(albums);
+        setSpotifyData(albums);
+      });
+    }, 300),
+    [],
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,12 +137,10 @@ const GenerateWorkoutForm = ({ setWorkoutData }) => {
 
   useEffect(() => {
     if (!formData.searchInput || !token) return;
-    const fetchAlbum = async () => {
-      const albums = await getSpotifyAlbums(formData.searchInput, token);
-      console.log(albums);
-      setSpotifyData(albums);
+    debouncedSearch(formData.searchInput, token);
+    return () => {
+      debouncedSearch.cancel();
     };
-    fetchAlbum();
   }, [formData.searchInput, token]);
 
   return (
