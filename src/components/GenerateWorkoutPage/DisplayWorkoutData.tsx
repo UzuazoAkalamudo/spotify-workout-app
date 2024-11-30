@@ -1,15 +1,40 @@
 import React, { useState } from "react";
 import { Track } from "../../models/models";
 import { Artist } from "../../interfaces/types";
+import SongView from "./SongView.tsx";
 
 const DisplayWorkoutData = ({ workoutData }) => {
   const [toggleSpeedClicked, setToggleSpeedClicked] = useState(true);
+  const [songViewClicked, setSongViewClicked] = useState(false);
+  const [trackIndex, setTrackIndex] = useState(0);
+
 
   const toggleSpeed = () => {
     setToggleSpeedClicked(!toggleSpeedClicked);
   };
 
+  const toggleView = () => {
+    setSongViewClicked(!songViewClicked);
+  };
+
+  const handleChangeSong = (e) =>{
+    console.log(e.target.id)
+    if (e.target.id === "previous-button" && trackIndex !== 0){
+      setTrackIndex(trackIndex-1)
+    }
+    else if (e.target.id === "next-button" && trackIndex !== workoutData?.tracks?.length-1){
+      setTrackIndex(trackIndex+1)
+    }
+  }
+
+  const handleSongClick = (index) => {
+    setTrackIndex(index);
+    toggleView();
+  }
+
   return (
+    <>
+    {songViewClicked ? <SongView handleChangeSong={handleChangeSong} toggleView={toggleView} songViewClicked={songViewClicked} workoutData={workoutData} trackIndex={trackIndex}/> :
     <section className="flex flex-col p-8 gap-8 h-screen w-screen overflow-y-auto">
       <section className="flex gap-10">
         <img
@@ -50,6 +75,7 @@ const DisplayWorkoutData = ({ workoutData }) => {
       </section>
 
       <section className="flex flex-col">
+        <button className="py-2 px-2 w-52 mb-8 h-15 rounded-md bg-green-400 hover:bg-green-500 focus:bg-green-600" onClick={toggleView}>{songViewClicked ? "Switch to Album View" : "Switch to Song View"}</button>
         <div className="grid grid-cols-[1fr,4fr,1fr,1fr] mb-4">
           <h2 aria-label="Track number">#</h2>
           <h2 aria-label="Track title">Title</h2>
@@ -70,7 +96,8 @@ const DisplayWorkoutData = ({ workoutData }) => {
           {workoutData?.tracks?.map((track: Track, index: number) => (
             <li
               key={index}
-              className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200"
+              className="grid grid-cols-[1fr,4fr,1fr,1fr] hover:bg-gray-200 cursor-pointer"
+              onClick={() => handleSongClick(index)}
             >
               <span>{index + 1}</span>
               <span>{track.name}</span>
@@ -82,7 +109,8 @@ const DisplayWorkoutData = ({ workoutData }) => {
           ))}
         </ul>
       </section>
-    </section>
+    </section>}
+    </>
   );
 };
 
